@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Results try{% endblock %}
+
+{% block body %}
+
+<div class="mx-auto w-50 mt-5">
+    <h1 class="text-center">Hello Douchebag! Here are the results</h1>
+
+<div class ="mx-auto mt-5 d-flex flex-column align-items-center">
+
+
+{% for user in Email %}
+<div class="card col-9 px-0 mb-5">
+                    <div class="card-header d-flex flex-row justify-content-between">
+                      <h6>Sujet: {{ user.subject }}</h6>
+                      <h6>Date</h6>
+                    </div>
+                    <div class="card-body d-flex flex-column flex-md-row justify-content-around">
+                      <blockquote class="blockquote mb-0 col-12 col-md-9 d-flex flex-column justify-content-around">
+                        <p class="messageP">Message</p>             
+                        <footer class="blockquote-footer">{{ user.Email }}</footer>
+                      </blockquote>
+                      <form class="stateP col-12 col-md-3 d-flex flex-column justify-content-center align-content-center align-items-center">
+                        <div class="form-group">
+                          <label for="state" class="col-12 text-center">Etat actuel : </label>
+                          <select class="form-control col-9 mx-auto text-left status" id="state" name="state">
+                            <option>À traiter</option>
+                            <option>À relancer</option>
+                            <option>Attente de réponse</option>
+                            <option>RDV pris</option>
+                            <option>Sans suite</option>
+                          </select>
+                        </div>
+                        <button type="button" value="" class="btn btn-primary mb-2 submitState">Modifier Etat</button>
+                      </form>
+                    </div>
+                  </div>
+    {% endfor %}
+</div>
+{{ dump(Email) }}
+</div>
+{% endblock %}
