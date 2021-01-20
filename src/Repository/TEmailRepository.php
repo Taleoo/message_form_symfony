@@ -19,32 +19,32 @@ class TEmailRepository extends ServiceEntityRepository
         parent::__construct($registry, TEmail::class);
     }
 
-    // /**
-    //  * @return TEmail[] Returns an array of TEmail objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function everything(): array
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+      $entityManager = $this->getEntityManager();
+      $query = $entityManager->createQuery("SELECT * FROM temail JOIN tmsg ON temail.id = tmsg.id_emailmsg_id");
+      return $query->getResult();
     }
-    */
+    //  /**
+    //   * @return TEmail[] Returns an array of TEmail objects
+    //   */
+   
+    
+    
+    // public function findByExampleField($value)
+    // {
+    //     return $this->createQueryBuilder('t')
+    //         ->andWhere('t.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('t.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    
 
-    /*
-    public function findOneBySomeField($value): ?TEmail
-    {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    
+    
+    
 }
