@@ -9,7 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * @ORM\Entity(repositoryClass=TMsgRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\TMsgRepository")
+ * 
 
  */
 class TMsg

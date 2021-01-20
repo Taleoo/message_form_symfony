@@ -21,9 +21,11 @@ class TEmailRepository extends ServiceEntityRepository
 
     public function everything(): array
     {
-      $entityManager = $this->getEntityManager();
-      $query = $entityManager->createQuery("SELECT * FROM temail JOIN tmsg ON temail.id = tmsg.id_emailmsg_id");
-      return $query->getResult();
+      return $this->createQueryBuilder('p')
+            ->leftJoin('p.tMsgs', 'tMsgs')
+            ->addSelect('tMsgs')
+            ->getQuery()
+            ->execute();
     }
     //  /**
     //   * @return TEmail[] Returns an array of TEmail objects

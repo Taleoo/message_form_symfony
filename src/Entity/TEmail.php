@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
- * @ORM\Entity(repositoryClass=TEmailRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\TEmailRepository")
  * @UniqueEntity(
  *  "Email",
  *  message="L'email est déjà là connard"

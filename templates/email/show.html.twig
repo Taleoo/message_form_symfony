@@ -10,15 +10,14 @@
 <div class ="mx-auto mt-5 d-flex flex-column align-items-center">
 
 
-{% for user in Email %}
+{% for user in msg %}
 <div class="card col-9 px-0 mb-5">
                     <div class="card-header d-flex flex-row justify-content-between">
-                      <h6>Sujet: {{ user.subject }}</h6>
-                      <h6>Date</h6>
+                      <h6>Sujet: {{ user.Subject }}</h6>
                     </div>
                     <div class="card-body d-flex flex-column flex-md-row justify-content-around">
                       <blockquote class="blockquote mb-0 col-12 col-md-9 d-flex flex-column justify-content-around">
-                        <p class="messageP">Message</p>             
+                        <p class="messageP">{{ user.msg }}</p>             
                         <footer class="blockquote-footer">{{ user.Email }}</footer>
                       </blockquote>
                       <form class="stateP col-12 col-md-3 d-flex flex-column justify-content-center align-content-center align-items-center">
@@ -38,6 +37,5 @@
                   </div>
     {% endfor %}
 </div>
-{{ dump(Email) }}
 </div>
 {% endblock %}

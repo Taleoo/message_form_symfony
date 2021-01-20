@@ -19,11 +19,16 @@ class ShowResults extends AbstractController
      */
     public function show_data(): Response
     { 
-      // $toto = new ManagerRegistry();  
-      // $repo = new TEmailRepository($toto);
-      // $Email = $repo->everything();
+
       $Email = $this->getDoctrine()->getRepository(TEmail::class)->everything();
+      $msg = [];
+      for ($i = 0; $i < count($Email); $i++) {
+        if ($Email[$i]->getTMsgs()->get('0') !== NULL)
+        {
+          array_push($msg, ['Email' => $Email[$i]->getEmail(), 'Subject' => $Email[$i]->getTMsgs()->get('0')->getSubject(), 'msg' => $Email[$i]->getTMsgs()->get('0')->getmsg()]);
+        }
+      }
     
-      return $this->render('email/show.html.twig', ['Email' => $Email]);
+      return $this->render('email/show.html.twig', ['msg' => $msg]);
     }
 }
