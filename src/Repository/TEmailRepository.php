@@ -24,6 +24,8 @@ class TEmailRepository extends ServiceEntityRepository
       return $this->createQueryBuilder('p')
             ->leftJoin('p.tMsgs', 'tMsgs')
             ->addSelect('tMsgs')
+            ->leftJoin('p.tPeople', 'tpeople')
+            ->addSelect('tpeople')
             ->getQuery()
             ->execute();
     }

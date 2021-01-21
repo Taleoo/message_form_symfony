@@ -22,10 +22,17 @@ class ShowResults extends AbstractController
 
       $Email = $this->getDoctrine()->getRepository(TEmail::class)->everything();
       $msg = [];
-      for ($i = 0; $i < count($Email); $i++) {
-        if ($Email[$i]->getTMsgs()->get('0') !== NULL)
+      foreach ($Email as $data) {
+        if ($data->getTMsgs()->get('0') !== NULL && $data->getTPeople()->get('0'))
         {
-          array_push($msg, ['Email' => $Email[$i]->getEmail(), 'Subject' => $Email[$i]->getTMsgs()->get('0')->getSubject(), 'msg' => $Email[$i]->getTMsgs()->get('0')->getmsg()]);
+          array_push($msg, [
+            'Email' => $data->getEmail(),
+            'Subject' => $data->getTMsgs()->get('0')->getSubject(),
+            'msg' => $data->getTMsgs()->get('0')->getmsg(),
+            'Nom' => $data->getTPeople()->get('0')->getLastName(),
+            'Prénom' => $data->getTPeople()->get('0')->getFirstName(),
+            'Téléphone' => $data->getTPeople()->get('0')->getPhone(),
+            ]);
         }
       }
     
