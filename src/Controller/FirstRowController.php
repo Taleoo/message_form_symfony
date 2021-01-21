@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 class FirstRowController extends AbstractController
 {
     /**
-     * @Route("/", name="create_first")
+     * @Route("/first", name="create_first")
      */
     public function create_row(Request $request): Response
     {   

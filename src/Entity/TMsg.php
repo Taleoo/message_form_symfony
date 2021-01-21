@@ -24,7 +24,6 @@ class TMsg
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(normalizer = "trim", message = "Merci")
      * @Assert\Length(
      *      min = 5,
      *      max = 255,
@@ -36,7 +35,6 @@ class TMsg
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(normalizer = "trim", message = "Merci")
      * @Assert\Length(
      *      min = 5,
      *      max = 999,
@@ -51,6 +49,16 @@ class TMsg
      * @ORM\JoinColumn(nullable=false)
      */
     private $id_Emailmsg;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $Date;
+
+    /**
+     * @ORM\Column(type="string", length=15)
+     */
+    private $State;
 
 
     public function getId(): ?int
@@ -90,6 +98,30 @@ class TMsg
     public function setIdEmailmsg(?TEmail $id_Emailmsg): self
     {
         $this->id_Emailmsg = $id_Emailmsg;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->Date;
+    }
+
+    public function setDate(\DateTimeInterface $Date): self
+    {
+        $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->State;
+    }
+
+    public function setState(string $State): self
+    {
+        $this->State = $State;
 
         return $this;
     }

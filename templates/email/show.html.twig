@@ -9,31 +9,36 @@
 
 <div class ="mx-auto mt-5 d-flex flex-column align-items-center">
 
-
 {% for user in msg %}
 <div class="card col-9 px-0 mb-5">
                     <div class="card-header d-flex flex-row justify-content-between">
                       <h6>Sujet: {{ user.Subject }}</h6>
-                      <h6>{{ user.Prénom }} {{ user.Nom }}</h6>
+                      <h6>Téléphone: {{user.Téléphone}}</h6>
+                    </div>
+                    <div class="card-header d-flex flex-row justify-content-between">
+                    <h6>Date: {{user.date|date('d-m-Y h:s') }}</h6>
+                    <h6>Etat: {{user.state }}</h6>
                     </div>
                     <div class="card-body d-flex flex-column flex-md-row justify-content-around">
                       <blockquote class="blockquote mb-0 col-12 col-md-9 d-flex flex-column justify-content-around">
                         <p class="messageP">{{ user.msg }}</p>             
-                        <footer class="blockquote-footer">{{ user.Email }}</footer>
+                        <footer class="blockquote-footer">{{ user.Prénom }} {{ user.Nom }} ( {{ user.Email }} )</footer>
                       </blockquote>
-                      <form class="stateP col-12 col-md-3 d-flex flex-column justify-content-center align-content-center align-items-center">
-                        <div class="form-group">
-                          <label for="state" class="col-12 text-center">Téléphone : {{user.Téléphone}}</label>
-                          <select class="form-control col-9 mx-auto text-left status" id="state" name="state">
-                            <option>À traiter</option>
-                            <option>À relancer</option>
-                            <option>Attente de réponse</option>
-                            <option>RDV pris</option>
-                            <option>Sans suite</option>
-                          </select>
-                        </div>
-                        <button type="button" value="" class="btn btn-primary mb-2 submitState">Modifier Etat</button>
-                      </form>
+                      <div>
+                        {{ form_start(forms[loop.index0]) }}
+                            <div>
+                                {{ form_errors(forms[loop.index0]) }}
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ form_row(forms[loop.index0].State, {'attr': {'class': 'w-100'}}) }}
+                                </div>
+                                <div class="col-12">
+                                    {{ form_row(forms[loop.index0].save, {'attr': {'class': 'btn btn-primary w-100'}}) }} 
+                                </div>
+                            </div>
+                          {{ form_end(forms[loop.index0]) }}
+                      </div>
                     </div>
                   </div>
     {% endfor %}
