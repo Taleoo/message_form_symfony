@@ -19,6 +19,10 @@ class TEmailRepository extends ServiceEntityRepository
         parent::__construct($registry, TEmail::class);
     }
 
+    /*
+      custom method everything() to query everything from all 3 tables/entities
+    */
+
     public function everything(): array
     {
       return $this->createQueryBuilder('p')

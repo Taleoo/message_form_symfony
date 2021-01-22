@@ -9,6 +9,8 @@
 
 <div class ="mx-auto mt-5 d-flex flex-column align-items-center">
 
+{# Foreach loop to display every result treated in ShowResults controller #}
+
 {% for user in msg %}
 <div class="card col-9 px-0 mb-5">
                     <div class="card-header d-flex flex-row justify-content-between">
@@ -24,6 +26,11 @@
                         <p class="messageP">{{ user.msg }}</p>             
                         <footer class="blockquote-footer">{{ user.Prénom }} {{ user.Nom }} ( {{ user.Email }} )</footer>
                       </blockquote>
+
+                        {# 
+                          Inserting new form below to update the state
+                        #}
+
                       <div>
                         {{ form_start(forms[loop.index0]) }}
                             <div>

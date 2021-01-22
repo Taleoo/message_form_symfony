@@ -20,6 +20,9 @@ class EmailForm extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+      /*
+        Custom builder for the first form, getting through TEmail entity to get to TPerson and TMsg
+      */
         $builder
             ->add('Email', EmailType::class)
             ->add('tpeople', CollectionType::class, [

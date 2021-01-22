@@ -11,6 +11,7 @@ class TMsgType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+      // did not add the fields date and state as they are defaulted every time
         $builder
         ->add('Subject')
         ->add('msg', TextareaType::class)
